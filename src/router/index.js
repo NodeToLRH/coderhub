@@ -2,7 +2,6 @@ const fs = require('fs')
 
 const useRoutes = function () {
   fs.readdirSync(__dirname).forEach(file => {
-    console.log('file: ', file)
     if (file === 'index.js') return
     const router = require(`./${file}`)
     this.use(router.routes())
