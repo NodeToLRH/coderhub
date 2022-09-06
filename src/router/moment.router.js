@@ -8,7 +8,8 @@ const {
   list,
   update,
   remove,
-  addLabels
+  addLabels,
+  fileInfo
 } = require('../controller/moment.controller')
 const { verifyAuth, verifyPermission } = require('../middleware/auth.middleware')
 const { verifyLabelExists } = require('../middleware/label.middleware')
@@ -28,5 +29,8 @@ momentRouter.delete('/:momentId', verifyAuth, verifyPermission, remove)
 
 // 动态添加标签
 momentRouter.post('/:momentId/labels', verifyAuth, verifyPermission, verifyLabelExists, addLabels)
+
+// 动态添加图片
+momentRouter.get('/images/:filename', fileInfo)
 
 module.exports = momentRouter
